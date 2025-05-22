@@ -1,17 +1,22 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.init';
 
 const Login = () => {
-  const provider = new GoogleAuthProvider
+  const navigate = useNavigate()
+  const location= useLocation()
+  const from = location.state?.from || '/'
+  
+  const provider = new GoogleAuthProvider()
 
   const handleGoogleSignin = () =>{
     
     signInWithPopup(auth, provider)
     .then(result =>{
       console.log(result)
+      navigate(from, {replace: true})
     })
     .catch(error =>{
       console.log(error)

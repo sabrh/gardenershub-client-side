@@ -1,8 +1,26 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { useContext, useState } from 'react';
+import { NavLink, useLocation } from 'react-router';
 import logoImg from '../assets/garden-logo.png'
+import { AuthContext } from '../context/AuthProvider';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/firebase.init';
 
 const Navbar = () => {
+    const location=useLocation()
+    const {user}=useContext(AuthContext)
+    
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+
+    const handleLogout= () => {
+        signOut(auth)
+        .then(() => {
+            console.log('User logged out')
+        })
+        .catch(err => console.error(err))
+
+        setDropdownOpen(false)
+    }
+
     const links = 
             <>
                 <li><NavLink to='/' className={({ isActive }) => isActive ? 
@@ -41,8 +59,25 @@ const Navbar = () => {
                 {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <NavLink to='/login' className="btn rounded-full bg-green-700 text-white hover:bg-white hover:text-green-700">Login/Signup</NavLink>
+            
+           <div className="navbar-end relative">
+                {!user ? (
+                <NavLink to="/login" state={{ from: location.pathname }} className="btn rounded-full bg-green-700 text-white hover:bg-white hover:text-green-700">
+                Login/Signup</NavLink>
+                ) : (
+                <div className="relative cursor-pointer" onClick={() => setDropdownOpen(!dropdownOpen)}
+                    onMouseLeave={() => setDropdownOpen(false)}>
+                    <img className="w-12 h-12 rounded-full border" src={user?.photoURL}
+                    alt="User" title={user?.displayName} />
+                    {dropdownOpen && (
+                    <div className="absolute top-12 right-0 bg-white border rounded shadow p-2">
+                        <p className="font-semibold mb-2">{user.displayName}</p>
+                        <button onClick={handleLogout} className="btn btn-sm bg-red-600 text-white w-full">Logout
+                        </button>
+                    </div>
+                    )}
+                </div>
+                )}
             </div>
         </div>
     );

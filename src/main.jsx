@@ -13,6 +13,7 @@ import Login from './auth/Login.jsx'
 import Signup from './auth/Signup.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
+import AuthProvider from './context/AuthProvider.jsx'
 
 const router=createBrowserRouter([
   {
@@ -55,6 +56,8 @@ const router=createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )
