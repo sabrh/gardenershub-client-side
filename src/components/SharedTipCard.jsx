@@ -24,7 +24,7 @@ const SharedTipCard = ({tip}) => {
                             <img src={imgUrl} alt={title} className="w-16 h-16 rounded object-cover" />
                         </td>
                         <td>
-                            <NavLink to='/tip-details'><button className='cursor-pointer'><FaRegEye size={20} /></button></NavLink>
+                            <NavLink to={`/details/${tip._id}`}><button className='cursor-pointer'><FaRegEye size={20} /></button></NavLink>
                         </td>
                     </tr>
                     

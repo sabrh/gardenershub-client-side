@@ -14,6 +14,7 @@ import Signup from './auth/Signup.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRoute from './routes/PrivateRoute.jsx'
+import TipDetails from './pages/TipDetails.jsx'
 
 const router=createBrowserRouter([
   {
@@ -41,6 +42,14 @@ const router=createBrowserRouter([
         path: "/browse-tips",
         loader: ()=> fetch('http://localhost:3000/sharetips'),
         element: <BrowseTips />,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <TipDetails />
+          </PrivateRoute>
+        )
       },
       {
         path: "/share-tip",
