@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const ShareTip = () => {
     const handleSubmit=async(e) => {
@@ -19,6 +20,11 @@ const ShareTip = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            Swal.fire({
+                title: "Tip Added!",
+                icon: "success",
+                draggable: true
+});
         })
         
     }
