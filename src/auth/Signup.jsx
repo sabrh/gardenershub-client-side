@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { NavLink, useLocation, useNavigate } from 'react-router';
@@ -46,20 +46,33 @@ const Signup = () => {
         // create user firebase
         createUserWithEmailAndPassword(auth, email, password)
         .then(result =>{
-            console.log(result)
+            const user=result.user
             setSuccess(true)
+
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photoURL
+                })
+                .then(() => {
+                console.log('User profile updated');
+                setSuccess(true);
+                navigate(from, { replace: true });
+                }).catch(error => {
+                console.error('Error updating profile:', error);
+                });
+            })
+        .catch(error => {
+            console.log(error);
+            setErrorMessage(error.message);
         })
-        .catch(error =>{
-            console.log(error)
-            setErrorMessage(error.message)
-        })
+        
     }
 
     return (
         <div className="card bg-base-100 max-w-sm mx-auto shrink-0 mt-1">
             <div className="card-body">
             <h1 className="text-3xl font-bold text-green-700">Signup!</h1>
-            <form onSubmit={handleSignup} className="fieldset">
+            <form onSubmit={handleSignup}>
                 <label className="label">Name</label>
                 <input type="text" name="name" className="input" placeholder="Name" />
 
@@ -77,7 +90,7 @@ const Signup = () => {
                     errorMessage && <p className='text-red-600'>{errorMessage}</p>
                 }
                 {
-                    success && <p className='text-green-600'>Account Created Successfully!</p>
+                    success && <p className='text-green-600'>Account Created Successfully! Now you can Login.</p>
                 }
                 <p className='text-lg'>Already have an account? <NavLink to='/login' className='text-blue-600 font-bold hover:underline'>Login</NavLink>.</p>
             </form>

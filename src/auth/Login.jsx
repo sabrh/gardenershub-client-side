@@ -1,5 +1,5 @@
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import React, { useState } from 'react';
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import React, { useRef, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.init';
@@ -7,6 +7,8 @@ import { auth } from '../firebase/firebase.init';
 const Login = () => {
   const [success, setSuccess]=useState(false)
   const [errorMessage, setErrorMessage]=useState('')
+
+  const emailRef=useRef()
 
   const navigate = useNavigate()
   const location= useLocation()
@@ -36,13 +38,29 @@ const Login = () => {
     setErrorMessage('')
     // login user firebase
     signInWithEmailAndPassword(auth, email, password)
-    .then(result =>{
-      console.log(result.user)
-      setSuccess(true)
-      navigate(from, {replace: true})
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+      setSuccess(true);
+      navigate(from, { replace: true });
     })
     .catch(error =>{
       console.log(error)
+      setErrorMessage(error.message)
+    })
+  }
+
+  const handleForgetPassword = () =>{
+    const email=emailRef.current.value
+
+    setErrorMessage('')
+
+    // send password reset mail
+    sendPasswordResetEmail(auth, email)
+    .then(() =>{
+      alert('A password reset email has been sent. Please check your email.')
+    })
+    .catch(error =>{
       setErrorMessage(error.message)
     })
   }
@@ -51,14 +69,14 @@ const Login = () => {
         <div className="card bg-base-100 max-w-sm mx-auto shrink-0 mt-2">
           <div className="card-body">
             <h1 className="text-3xl font-bold text-green-700">Login now!</h1>
-            <form on Submit={handleLogin} className="fieldset">
+            <form onSubmit={handleLogin}>
               <label className="label">Email</label>
-              <input type="email" name="email" className="input" placeholder="Email" />
+              <input type="email" name="email" ref={emailRef} className="input" placeholder="Email" />
 
               <label className="label">Password</label>
               <input type="password" name="password" className="input" placeholder="Password" />
 
-              <div><a className="link link-hover">Forgot password?</a></div>
+              <div onClick={handleForgetPassword}><a className="link link-hover">Forgot password?</a></div>
               <button className="btn rounded-full bg-green-700 text-white mt-4">Login</button>
               {
                   errorMessage && <p className='text-red-600'>{errorMessage}</p>

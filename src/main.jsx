@@ -12,8 +12,8 @@ import MyTips from './pages/MyTips.jsx'
 import Login from './auth/Login.jsx'
 import Signup from './auth/Signup.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
-import PrivateRoute from './components/PrivateRoute.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
+import PrivateRoute from './routes/PrivateRoute.jsx'
 
 const router=createBrowserRouter([
   {
@@ -23,32 +23,40 @@ const router=createBrowserRouter([
     children: [
       {
         index: true,
-        Component: Home,
+        element: <Home />,
       },
       {
         path: "/login",
-        Component: Login,
+        element: <Login />,
       },
       {
         path: "/signup",
-        Component: Signup,
+        element: <Signup />,
       },
       {
         path: "/explore-gardners",
-        Component: ExploreGardners,
+        element: <ExploreGardners />,
       },
       {
         path: "/browse-tips",
         loader: ()=> fetch('http://localhost:3000/sharetips'),
-        Component: BrowseTips,
+        element: <BrowseTips />,
       },
       {
         path: "/share-tip",
-        Component: ShareTip,
+        element: (
+          <PrivateRoute>
+            <ShareTip />
+          </PrivateRoute>
+        )
       },
       {
         path: "/my-tips",
-        Component: MyTips,
+        element:(
+          <PrivateRoute>
+            <MyTips />
+          </PrivateRoute>
+        )
       },
     ]
   },

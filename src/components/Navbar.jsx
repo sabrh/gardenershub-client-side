@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import logoImg from '../assets/garden-logo.png'
-import { AuthContext } from '../context/AuthProvider';
+import AuthContext from '../context/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 
