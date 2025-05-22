@@ -21,7 +21,7 @@ const ShareTip = () => {
         .then(data => {
             console.log(data)
             Swal.fire({
-                title: "Tip Added!",
+                title: "Tip Submitted!",
                 icon: "success",
                 draggable: true
 });

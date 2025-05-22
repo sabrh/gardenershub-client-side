@@ -38,6 +38,7 @@ const router=createBrowserRouter([
       },
       {
         path: "/browse-tips",
+        loader: ()=> fetch('http://localhost:3000/sharetips'),
         Component: BrowseTips,
       },
       {
