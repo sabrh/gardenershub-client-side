@@ -5,6 +5,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import { auth } from '../firebase/firebase.init';
 
 const Signup = () => {
+    const [success, setSuccess]=useState(false)
     const [errorMessage, setErrorMessage]=useState('')
     const navigate = useNavigate()
     const location= useLocation()
@@ -32,11 +33,21 @@ const Signup = () => {
         const photoURL = e.target.photoURL.value
         console.log(name, email, password, photoURL)
 
+        setSuccess(false)
         setErrorMessage('')
+
+        // password validation 
+        const passwordRegEx=/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}/
+        if(passwordRegEx.test(password) === false){
+            setErrorMessage('Password should be at least 8 characters and include 1 uppercase, 1 lowercase, and a special character')
+            return
+        }
+
         // create user firebase
         createUserWithEmailAndPassword(auth, email, password)
         .then(result =>{
             console.log(result)
+            setSuccess(true)
         })
         .catch(error =>{
             console.log(error)
@@ -64,6 +75,9 @@ const Signup = () => {
                 <button className="btn rounded-full bg-green-700 text-white mt-4">Signup</button>
                 {
                     errorMessage && <p className='text-red-600'>{errorMessage}</p>
+                }
+                {
+                    success && <p className='text-green-600'>Account Created Successfully!</p>
                 }
                 <p className='text-lg'>Already have an account? <NavLink to='/login' className='text-blue-600 font-bold hover:underline'>Login</NavLink>.</p>
             </form>
