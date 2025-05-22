@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <footer className="footer sm:footer-horizontal footer-center bg-green-800 text-white p-4">
             <aside>
-                <p className='flex justify-center items-center'><MdMail size={18} className='mx-1' />: gardnershub@contactus.com | <NavLink to='/terms-conditions'> Terms & Conditions</NavLink></p>
+                <p className='flex justify-center items-center'><MdMail size={18} className='mx-1' />: contact@gardnershub.com | <NavLink to='/terms-conditions' className='hover:underline'> Terms & Conditions</NavLink></p>
                 <nav className="flex gap-4 md:place-self-center md:justify-self-center">
                     <a href='https://www.facebook.com/groups/largestgardeninggroup/' target='_blank'>
                     <FaFacebook size={20} />

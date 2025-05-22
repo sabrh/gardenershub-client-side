@@ -9,15 +9,17 @@ const Login = () => {
             <h1 className="text-3xl font-bold text-green-700">Login now!</h1>
             <form className="fieldset">
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
+              <input type="email" name="email" className="input" placeholder="Email" />
+
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input type="password" name="password" className="input" placeholder="Password" />
+
               <div><a className="link link-hover">Forgot password?</a></div>
               <button className="btn rounded-full bg-green-700 text-white mt-4">Login</button>
               <p className='text-lg'>Don't have an account? <NavLink to='/signup' className='text-blue-600 font-bold hover:underline'>Signup</NavLink> here.</p>
             </form>
             <p className='text-center text-gray-500 text-lg'>-- OR --</p>
-            <button className="btn rounded-full border-green-700"><FcGoogle />Sigin with Google</button>
+            <button className="btn rounded-full border-green-700"><FcGoogle size={20} />Signin with Google</button>
           </div>
         </div>   
     );

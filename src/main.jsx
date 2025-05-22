@@ -11,10 +11,13 @@ import ShareTip from './pages/ShareTip.jsx'
 import MyTips from './pages/MyTips.jsx'
 import Login from './auth/Login.jsx'
 import Signup from './auth/Signup.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
+import PrivateRoute from './components/PrivateRoute.jsx'
 
 const router=createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     Component: MainLayout,
     children: [
       {
