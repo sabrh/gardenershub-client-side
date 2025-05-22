@@ -1,8 +1,23 @@
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { NavLink } from 'react-router';
+import { auth } from '../firebase/firebase.init';
 
 const Login = () => {
+  const provider = new GoogleAuthProvider
+
+  const handleGoogleSignin = () =>{
+    
+    signInWithPopup(auth, provider)
+    .then(result =>{
+      console.log(result)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }
+
     return (
         <div className="card bg-base-100 max-w-sm mx-auto shrink-0 mt-2">
           <div className="card-body">
@@ -19,7 +34,7 @@ const Login = () => {
               <p className='text-lg'>Don't have an account? <NavLink to='/signup' className='text-blue-600 font-bold hover:underline'>Signup</NavLink> here.</p>
             </form>
             <p className='text-center text-gray-500 text-lg'>-- OR --</p>
-            <button className="btn rounded-full border-green-700"><FcGoogle size={20} />Signin with Google</button>
+            <button onClick={handleGoogleSignin} className="btn rounded-full border-green-700"><FcGoogle size={20} />Signin with Google</button>
           </div>
         </div>   
     );
