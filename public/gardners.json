@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Lina Green",
+    "age": 30,
+    "gender": "Female",
+    "status": "active",
+    "experiences": "5 years of urban gardening",
+    "imgUrl": "https://randomuser.me/api/portraits/women/45.jpg",
+    "totalSharedTips": 12
+  },
+  {
+    "name": "Mark Wood",
+    "age": 42,
+    "gender": "Male",
+    "status": "active",
+    "experiences": "10 years in landscape design",
+    "imgUrl": "https://randomuser.me/api/portraits/men/32.jpg",
+    "totalSharedTips": 20
+  },
+  {
+    "name": "Sara Bloom",
+    "age": 27,
+    "gender": "Female",
+    "status": "active",
+    "experiences": "3 years of balcony gardening",
+    "imgUrl": "https://randomuser.me/api/portraits/women/65.jpg",
+    "totalSharedTips": 8
+  },
+  {
+    "name": "John Leaf",
+    "age": 35,
+    "gender": "Male",
+    "status": "active",
+    "experiences": "7 years of organic farming",
+    "imgUrl": "https://randomuser.me/api/portraits/men/75.jpg",
+    "totalSharedTips": 15
+  },
+  {
+    "name": "Maya Terracotta",
+    "age": 29,
+    "gender": "Female",
+    "status": "active",
+    "experiences": "Indoor plant specialist for 4 years",
+    "imgUrl": "https://randomuser.me/api/portraits/women/12.jpg",
+    "totalSharedTips": 10
+  },
+  {
+    "name": "Carlos Sprout",
+    "age": 38,
+    "gender": "Male",
+    "status": "active",
+    "experiences": "Community garden leader for 6 years",
+    "imgUrl": "https://randomuser.me/api/portraits/men/43.jpg",
+    "totalSharedTips": 18
+  },
+  {
+    "name": "Diana Willow",
+    "age": 33,
+    "gender": "Female",
+    "status": "inactive",
+    "experiences": "2 years of succulent care",
+    "imgUrl": "https://randomuser.me/api/portraits/women/77.jpg",
+    "totalSharedTips": 5
+  },
+  {
+    "name": "Ethan Roots",
+    "age": 40,
+    "gender": "Male",
+    "status": "inactive",
+    "experiences": "Greenhouse management expert",
+    "imgUrl": "https://randomuser.me/api/portraits/men/80.jpg",
+    "totalSharedTips": 9
+  },
+  {
+    "name": "Nina Fern",
+    "age": 26,
+    "gender": "Female",
+    "status": "inactive",
+    "experiences": "Beginner herb grower",
+    "imgUrl": "https://randomuser.me/api/portraits/women/20.jpg",
+    "totalSharedTips": 3
+  },
+  {
+    "name": "Oliver Moss",
+    "age": 45,
+    "gender": "Male",
+    "status": "inactive",
+    "experiences": "Tree plantation volunteer for 10 years",
+    "imgUrl": "https://randomuser.me/api/portraits/men/18.jpg",
+    "totalSharedTips": 11
+  }
+]
