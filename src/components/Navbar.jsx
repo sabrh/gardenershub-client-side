@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
-import logoImg from '../assets/garden-logo.png'
+import logoImg from '../assets/garden-logo.jpg'
 import AuthContext from '../context/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
+import { RiPlantFill } from 'react-icons/ri';
 
 const Navbar = () => {
     const location=useLocation()
@@ -52,7 +53,7 @@ const Navbar = () => {
                     {links}
                 </ul>
                 </div>
-                <NavLink to='/' className="flex items-center text-xl"><img className='w-15 rounded-full' src={logoImg} alt="logo" />GardnersHub</NavLink>
+                <NavLink to='/' className="flex items-center text-xl"><img src={logoImg} className="w-15" alt='logo' />GardnersHub</NavLink>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

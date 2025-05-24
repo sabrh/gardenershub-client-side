@@ -20,8 +20,8 @@ const FeaturedGardener = () => {
             <img src={g.imgUrl} alt={g.name} className="rounded-lg w-full h-32 md:h-52 object-cover" />
             <h3 className="text-xl font-semibold text-green-800 mt-4">{g.name}</h3>
             <p className="text-sm text-gray-600">Age: {g.age} |  {g.gender}</p>
-            <p className="text-sm mt-1"><strong>Experience:</strong> {g.experiences}</p>
-            <p className="text-sm mt-1"><strong>Shared Tips:</strong> {g.totalSharedTips}</p>
+            <p className="text-sm mt-1"><b>Experience:</b> {g.experiences}</p>
+            <p className="text-sm mt-1"><b>Shared Tips:</b> {g.totalSharedTips}</p>
           </div>
         ))}
       </div>
