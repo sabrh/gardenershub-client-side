@@ -12,7 +12,7 @@ const FeaturedGardener = () => {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto py-10">
+    <div className="max-w-6xl mx-auto py-10 bg-base-100">
       <h2 className="flex items-center justify-center text-3xl font-bold text-center mb-6 text-green-700"><FaLeaf/> Featured Gardeners</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {gardeners.map((g, i) => (

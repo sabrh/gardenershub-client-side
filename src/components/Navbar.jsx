@@ -4,9 +4,22 @@ import logoImg from '../assets/garden-logo.jpg'
 import AuthContext from '../context/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
-import { RiPlantFill } from 'react-icons/ri';
+
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import useDarkSide from "../Hooks/UseDarkSide";
 
 const Navbar = () => {
+    const [colorTheme, setTheme] = useDarkSide();
+    const [darkSide, setDarkSide] = useState(
+        colorTheme === "light" ? true : false
+    );
+
+    const toggleDarkMode = (checked) => {
+        setTheme(colorTheme);
+        setDarkSide(checked);
+    };
+
+
     const location=useLocation()
     const {user}=useContext(AuthContext)
     
@@ -41,7 +54,7 @@ const Navbar = () => {
             </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-200 shadow-sm md:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -61,7 +74,14 @@ const Navbar = () => {
                 </ul>
             </div>
             
-           <div className="navbar-end relative">
+           <div className="navbar-end relative justify-between items-center">
+            <DarkModeSwitch className="bg-gray-300  rounded-full"
+                style={{ marginBottom: "2rem" }}
+                checked={darkSide}
+                onChange={toggleDarkMode}
+                size={30}
+            />
+
                 {!user ? (
                 <NavLink to="/login" state={{ from: location.pathname }} className="btn rounded-full bg-green-700 text-white hover:bg-white hover:text-green-700">
                 Login/Signup</NavLink>
