@@ -8,7 +8,7 @@ const FeaturedGardener = () => {
   useEffect(() => {
     fetch("http://localhost:3000/featured-gardeners")
       .then((res) => res.json())
-      .then((data) => setGardeners(data));
+      .then((data) => setGardeners(data))
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { FaSunPlantWilt } from 'react-icons/fa6';
+import { NavLink } from 'react-router';
 
 const TrendingTips = () => {
   const [tips, setTips] = useState([]);
@@ -9,7 +10,7 @@ const TrendingTips = () => {
     fetch("http://localhost:3000/trending-tips")
       .then((res) => res.json())
       .then((data) => setTips(data))
-      .catch((err) => console.error("Error fetching trending tips:", err));
+      .catch((err) => console.error("Error fetching trending tips:", err))
   }, []);
 
   return (
@@ -19,11 +20,7 @@ const TrendingTips = () => {
         {tips.map((tip) => (
           <div key={tip._id} className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all">
             <figure>
-              <img
-                src={tip.imgUrl}
-                alt={tip.title || "Garden Tip"}
-                className="h-52 w-full object-cover"
-              />
+              <img src={tip.imgUrl} alt="Garden Tip" className="h-52 w-full object-cover"/>
             </figure>
             <div className="card-body">
               <h3 className="card-title">{tip.title}</h3>
@@ -32,9 +29,11 @@ const TrendingTips = () => {
                 <span className="text-green-600 font-semibold">
                   Likes: {tip.totalLiked || 0}
                 </span>
+                <NavLink to={`/details/${tip._id}`}>
                 <button className="btn btn-outline btn-sm text-green-600 border-green-500 hover:bg-green-100">
                   View Tip
                 </button>
+                </NavLink>
               </div>
             </div>
           </div>
