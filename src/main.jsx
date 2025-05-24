@@ -15,6 +15,7 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRoute from './routes/PrivateRoute.jsx'
 import TipDetails from './pages/TipDetails.jsx'
+import UpdateTip from './pages/UpdateTip.jsx'
 
 const router=createBrowserRouter([
   {
@@ -64,6 +65,14 @@ const router=createBrowserRouter([
         element:(
           <PrivateRoute>
             <MyTips />
+          </PrivateRoute>
+        )
+      },
+      {
+        path: "/update-tip/:id",
+        element:(
+          <PrivateRoute>
+            <UpdateTip />
           </PrivateRoute>
         )
       },

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
+import AuthContext from '../context/AuthContext'
 
 const ShareTip = () => {
+    const {user} = useContext(AuthContext)
+
     const handleSubmit=async(e) => {
         e.preventDefault()
 
         const form=e.target
         const formData=new FormData(form)
         const shareTipData = Object.fromEntries(formData.entries())
+
+        shareTipData.userName=user?.displayName
+        shareTipData.userEmail=user?.email
 
         // send tips data to the db
         fetch('http://localhost:3000/sharetips', {
@@ -24,7 +30,8 @@ const ShareTip = () => {
                 title: "Tip Submitted!",
                 icon: "success",
                 draggable: true
-});
+            });
+            form.reset()
         })
         
     }
@@ -33,6 +40,10 @@ const ShareTip = () => {
         <div className="card bg-base-100 max-w-md mx-auto shrink-0 mt-2">
             <div className="card-body">
             <h1 className="text-3xl font-bold text-green-700">Share a Garden Tip with us!</h1>
+            <div>
+                <p className='text-green-600 font-bold'>Tip by: {user?.displayName}</p>
+                <p className='text-green-600'>{user?.email}</p>
+            </div>
             <form onSubmit={handleSubmit} className="fieldset">
                 <input type="text" name="title" placeholder="Title" className="input input-bordered w-full" required />
                 <input type="text" name="topic" placeholder="Plant Type / Topic" className="input input-bordered w-full" required />
