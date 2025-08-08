@@ -1,12 +1,55 @@
-# React + Vite
+# 🌿 GardnersHub – A Gardening Community & Resource Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL**: [https://gardnershub-sabrh.netlify.app](https://gardnershub-sabrh.netlify.app)  
+  
+**Server GitHub Repo**: [https://github.com/sabrh/gardnershub-server](https://github.com/sabrh/gardenershub-server-side)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📄 Project Description
 
-## Expanding the ESLint configuration
+**GardnersHub** is a full-stack gardening community platform where users can share tips, explore gardening advice, attend events, and connect with fellow gardening lovers. The platform includes authentication, CRUD operations, filtering, liking tips, and a responsive UI.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Key Features
+
+- 🔐 Firebase authentication with Google login and JWT-protected routes
+- 📝 Share, update, delete garden tips (with public/private visibility)
+- 🔍 Browse tips with filtering by difficulty level and like functionality
+- 🌿 Explore gardener profiles with experience and status info
+- 🎨 Custom 404 page + loading spinners
+- 📈 Trending tips section showing most liked tips
+- ⚙️ Role-based UI, environment variables, and responsive across all devices
+- ✨ Integrated: Lottie React & React Awesome Reveal
+
+---
+
+## 🧪 Technologies Used
+
+### 💻 Frontend
+- React.js, React Router DOM
+- Tailwind CSS, DaisyUI
+- TanStack React Query
+- Axios, Firebase, SweetAlert2
+- Lottie React, React Awesome Reveal
+
+### 🖥️ Backend
+- Node.js, Express.js
+- MongoDB (Mongoose)
+- JSON Web Token (JWT)
+- CORS, Dotenv
+
+---
+
+## 📁 Environment Variables
+
+Both client and server use `.env` files to store Firebase config, MongoDB URI, and Stripe keys. These are **excluded** from GitHub using `.gitignore`.
+
+---
+
+## 📱 Responsiveness
+
+- ✅ Fully responsive on mobile, tablet, and desktop
+- ✅ Reload-safe protected routes
+- ✅ Maintains state after refresh
